@@ -4,7 +4,7 @@
 {
     'name': 'More Invoice Space',
     'summary': 'Reduces padding and margins below the header to the minimum, and reduces the font of the body to 80%.',
-    'version': '17.0.1.0.0',
+    'version': '18.0.1.0',
     'license': 'LGPL-3',
     'author': 'Blanco Martín & Asociados',
     'website': 'https://www.bmya.cl',
