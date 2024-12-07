@@ -11,7 +11,7 @@
     "version": "18.0.1.0.0",
     "author": "Blanco Martín & Asociados",
     'license': "LGPL-3",
-    "website": "http://blancomartin.cl",
+    "website": "https://www.bmya.cl",
     "category": "Localization/Geopolitical Distribution",
     "depends": [
         "base",
