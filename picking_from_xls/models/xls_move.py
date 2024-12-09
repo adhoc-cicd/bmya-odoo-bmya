@@ -20,7 +20,7 @@ except ImportError:
     pass
 
 
-class StockMove(models.Model):
+class StockPicking(models.Model):
     _inherit = 'stock.picking'
 
     product_uom_qty = fields.Float("Quantity On Hand")

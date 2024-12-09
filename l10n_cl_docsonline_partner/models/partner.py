@@ -16,7 +16,7 @@ tax_resp_category = {'1': '1',  '2': '2', 'ND': '1'}
 controlled_fields = ['name', 'street', 'email', 'l10n_cl_activity_description']
 
 
-class PartnerDataSII(models.Model):
+class ResPartner(models.Model):
     _inherit = 'res.partner'
 
     backup_name = fields.Char('Backup Name')

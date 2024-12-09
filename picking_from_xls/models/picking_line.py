@@ -7,7 +7,7 @@ from odoo import models, fields
 _logger = logging.getLogger(__name__)
 
 
-class PickingLineDescription(models.Model):
+class StockMove(models.Model):
     _inherit = 'stock.move'
 
     move_description = fields.Char('Motivo del Movimiento')

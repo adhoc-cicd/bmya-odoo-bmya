@@ -1,8 +1,7 @@
 from odoo import api, fields, models
 
 
-class ResState(models.Model):
-    _name = 'res.country.state'
+class ResCountryState(models.Model):
     _inherit = 'res.country.state'
 
     code = fields.Char(
