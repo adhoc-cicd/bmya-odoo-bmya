@@ -72,10 +72,6 @@ class AccountChangeCurrency(models.TransientModel):
         old_amount_untaxed = move.amount_untaxed
         if self.currency_id == move.currency_id:
             return {'type': 'ir.actions.act_window_close'}
-        # if self.currency_id == move.company_id.currency_id:
-        #     rate = self.currency_rate
-        # else:
-        #     rate = 1 / self.currency_rate
         for line in move.invoice_line_ids:
             line.price_unit = line.price_unit * self.currency_rate
             line.currency_id = self.currency_id
@@ -85,14 +81,19 @@ class AccountChangeCurrency(models.TransientModel):
         else:
             previous_currency = self.currency_id
             rate = 1 / self.currency_rate
-        message = _("|| Original quotation in {0}. Rate: {1}").format(
+        message = _("|| Original or Previous quotation in {0}. Rate: {1}").format(
             previous_currency.name, formatLang(self.env, rate, currency_obj=move.company_id.currency_id))
         if '||' in str(move.narration):
             move.narration = move.narration[:move.narration.find('||')] + message
         else:
-            move.narration = '%s %s' % (move.narration or '', message)
-        body = _('%s. Original Untaxed Amount: %s. ', message.split(". ")[1], formatLang(self.env, old_amount_untaxed, currency_obj=move.currency_id))
+            move.narration = '{0} {1}'.format(move.narration or '', message)
+        body = '{message1}. {message2}: {message3}'.format(
+            message1=message.split(". ")[1],
+            message2=_('Original or Previous Untaxed Amount'),
+            message3=formatLang(self.env, old_amount_untaxed, currency_obj=move.currency_id)
+        )
         move.currency_id = self.currency_id
-        body += Markup('<br />') + _('Calculated Untaxed Amount: %s', formatLang(self.env, move.amount_untaxed, currency_obj=move.currency_id))
-        move.message_post(body=body, body_is_html=True)
+        body += Markup('<br />') + _('Calculated Untaxed Amount: {}').format(
+            formatLang(self.env, move.amount_untaxed, currency_obj=move.currency_id))
+        move.message_post(body=body)
         return {'type': 'ir.actions.act_window_close'}
