@@ -15,4 +15,5 @@
         'views/report_invoice.xml',
         'views/report_template.xml',
     ],
+    'installable': False,
 }
