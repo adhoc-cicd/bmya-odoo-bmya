@@ -12,8 +12,8 @@
         'account',
     ],
     'data': [
-        'views/report_invoice.xml',
-        'views/report_template.xml',
+        # 'views/report_invoice.xml',
+        # 'views/report_template.xml',
     ],
-    'installable': False,
+    'installable': True,
 }

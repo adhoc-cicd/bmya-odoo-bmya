@@ -17,10 +17,10 @@
         'security/ir.model.access.csv',
         'data/ir.config_parameter.xml',
         'views/partner_view.xml',
-        'views/res_config_settings.xml',
-        'wizard/data_docsonline_view.xml',
+        # 'views/res_config_settings.xml',
+        # 'wizard/data_docsonline_view.xml',
     ],
-    'installable': False,
+    'installable': True,
     'auto_install': False,
     'application': False,
 }
